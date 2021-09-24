@@ -1,4 +1,4 @@
-# pytest -s test_foo.py
+# pr
 
 from pages.product_page import ProductPage
 
@@ -11,4 +11,4 @@ def test_guest_can_add_product_to_basket(browser):
     page.add_product_to_the_backed()
     # time.sleep(999)
     page.should_be_message_the_product_has_been_added_to_the_backed()
-    page.check_if_price_is_as_expected()
+    page.price_should_be_as_expected()
