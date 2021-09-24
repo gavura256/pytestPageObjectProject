@@ -1,5 +1,5 @@
 from pages.base_page import BasePage
-from pages.locators import LoginPageLocators
+from pages.locators import LoginPageLocators, BasePageLocators
 
 
 class LoginPage(BasePage):
@@ -9,8 +9,8 @@ class LoginPage(BasePage):
         self.should_be_register_form()
 
     def should_be_login_url(self):
-        assert self.is_element_present(*LoginPageLocators.LOGIN_LINK), "Login url is not presented"
-        login_link = self.browser.find_element(*LoginPageLocators.LOGIN_LINK)
+        assert self.is_element_present(*BasePageLocators.LOGIN_LINK), "Login url is not presented"
+        login_link = self.browser.find_element(*BasePageLocators.LOGIN_LINK)
         login_link.click()
         assert "login" in self.browser.current_url, "There is not login in url"
 
