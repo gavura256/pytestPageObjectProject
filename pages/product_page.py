@@ -3,7 +3,7 @@ from pages.locators import ProductPageLocators
 
 
 class ProductPage(BasePage):
-    def add_product_to_the_backed(self):
+    def add_product_to_the_basket(self):
         assert self.is_element_present(*ProductPageLocators.ADD_TO_BACKED_BUTTON), "Login url is not presented"
         link = self.browser.find_element(*ProductPageLocators.ADD_TO_BACKED_BUTTON)
         link.click()
