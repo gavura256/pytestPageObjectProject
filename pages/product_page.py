@@ -11,10 +11,10 @@ class ProductPage(BasePage):
 
     def should_be_message_the_product_has_been_added_to_the_backed(self):
         product_name = self.browser.find_element(*ProductPageLocators.PRODUCT_NAME).text
-        message_text = self.browser.find_element(*ProductPageLocators.MESSAGES).text
+        message_text = self.browser.find_element(*ProductPageLocators.MESSAGE).text
         assert product_name in message_text, "No product name in messages"
 
     def price_should_be_as_expected(self):
-        product_price = '9.99'
-        message_text = self.browser.find_element(*ProductPageLocators.MESSAGES).text
+        product_price = self.browser.find_element(*ProductPageLocators.PRODUCT_PRICE).text
+        message_text = self.browser.find_element(*ProductPageLocators.MESSAGE).text
         assert product_price in message_text, "Wrong price for the product"

@@ -13,5 +13,6 @@ class LoginPageLocators:
 
 class ProductPageLocators:
     ADD_TO_BACKED_BUTTON = (By.CSS_SELECTOR, ".btn.btn-lg.btn-primary.btn-add-to-basket")
-    PRODUCT_NAME = (By.CSS_SELECTOR, ".breadcrumb .active")
-    MESSAGES = (By.CSS_SELECTOR, "#messages")
+    PRODUCT_NAME = (By.CSS_SELECTOR, ".col-sm-6.product_main h1")
+    PRODUCT_PRICE = (By.CSS_SELECTOR, ".col-sm-6.product_main .price_color")
+    MESSAGE = (By.CSS_SELECTOR, "#messages")
