@@ -1,4 +1,4 @@
-from selenium.common.exceptions import NoSuchFrameException
+from selenium.common.exceptions import NoSuchElementException
 
 
 class BasePage:
@@ -14,6 +14,6 @@ class BasePage:
 
         try:
             self.browser.find_element(how, what)
-        except NoSuchFrameException:
+        except NoSuchElementException:
             return False
         return True
