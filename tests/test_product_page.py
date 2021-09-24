@@ -23,7 +23,7 @@ def test_guest_can_add_product_to_basket(browser, link):
     page = ProductPage(browser, link)
     page.open()
     page.add_product_to_the_basket()
-    page.should_be_message_the_product_has_been_added_to_the_backed()
+    page.should_be_message_the_product_has_been_added_to_the_basket()
     page.price_should_be_as_expected()
 
 

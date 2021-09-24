@@ -9,7 +9,7 @@ class ProductPage(BasePage):
         link.click()
         self.solve_quiz_and_get_code()
 
-    def should_be_message_the_product_has_been_added_to_the_backed(self):
+    def should_be_message_the_product_has_been_added_to_the_basket(self):
         product_name = self.browser.find_element(*ProductPageLocators.PRODUCT_NAME).text
         message_text = self.browser.find_element(*ProductPageLocators.PRODUCT_MESSAGE_NAME).text
         assert product_name == message_text, "Wrong product's name in message"
