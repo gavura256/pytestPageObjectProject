@@ -4,6 +4,7 @@ from pages.product_page import ProductPage
 
 
 def test_guest_cannot_see_product_in_basket_opened_from_main_page(browser):
+    browser.delete_all_cookies()
     link = "http://selenium1py.pythonanywhere.com/"
     page = MainPage(browser, link)
     page.open()
@@ -14,6 +15,7 @@ def test_guest_cannot_see_product_in_basket_opened_from_main_page(browser):
 
 
 def test_guest_cannot_see_product_in_basket_opened_from_product_page(browser):
+    browser.delete_all_cookies()
     link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
     page = ProductPage(browser, link)
     page.open()
