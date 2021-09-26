@@ -16,12 +16,12 @@ class TestUserAddToBasketFromProductPage:
     @pytest.fixture(scope="function", autouse=True)
     def setup(self, browser):
         browser.delete_all_cookies()
-        page = LoginPage(browser, LOGIN_PAGE_LINK)
-        page.open()
-        page.should_be_login_page()
+        login_page = LoginPage(browser, LOGIN_PAGE_LINK)
+        login_page.open()
+        login_page.should_be_login_page()
         person = Person(EN)
-        page.register_new_user(person.email(), person.password(length=9))
-        page.should_be_authorized_user()
+        login_page.register_new_user(person.email(), person.password(length=9))
+        login_page.should_be_authorized_user()
 
     @pytest.mark.need_review
     def test_user_can_add_product_to_basket(self, browser):
