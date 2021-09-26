@@ -1,4 +1,6 @@
 import pytest
+from mimesis import Person
+from mimesis.locales import EN
 
 from pages.basket_page import BasketPage
 from pages.login_page import LoginPage
@@ -6,11 +8,21 @@ from pages.main_page import MainPage
 from pages.product_page import ProductPage
 
 LINK = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
+LOGIN_PAGE_LINK = "http://selenium1py.pythonanywhere.com/accounts/login/"
 
 
 class TestUserAddToBasketFromProductPage:
-    def test_user_cannot_see_product_in_basket_opened_from_main_page(self, browser):
+    @pytest.fixture(scope="function", autouse=True)
+    def setup(self, browser):
         browser.delete_all_cookies()
+        page = LoginPage(browser, LOGIN_PAGE_LINK)
+        page.open()
+        page.should_be_login_page()
+        person = Person(EN)
+        page.register_new_user(person.email(), person.password(length=9))
+        page.should_be_authorized_user()
+
+    def test_user_cannot_see_product_in_basket_opened_from_main_page(self, browser):
         link = "http://selenium1py.pythonanywhere.com/"
         page = MainPage(browser, link)
         page.open()
@@ -20,7 +32,6 @@ class TestUserAddToBasketFromProductPage:
         basket_page.should_see_empty_basket_message()
 
     def test_user_cannot_see_product_in_basket_opened_from_product_page(self, browser):
-        browser.delete_all_cookies()
         link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
         page = ProductPage(browser, link)
         page.open()
