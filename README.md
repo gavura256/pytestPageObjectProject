@@ -1,1 +1,1 @@
-This is the project for learning pytest, Selenium and Page Object Model Pattern
+This is the project for learning pytest, Selenium and Page Object Model Pattern. 
